@@ -1,0 +1,64 @@
+<#assign basePath=req.contextPath>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="my self">
+<meta name="author" content="tdu">
+<title>IPE快速开发平台登入</title>
+<!--bootstrap-->
+<link rel="stylesheet" type="text/css" href="${basePath}/resources/lib/bootstrap/css/bootstrap.min.css"  rel="stylesheet" media="screen"/>
+<link rel="stylesheet" type="text/css" href="${basePath}/resources/lib/bootstrap/css/bootstrap-theme.min.css"  rel="stylesheet" media="screen"/>
+<script type="text/javascript" src="${basePath}/resources/lib/bootstrap/js/jquery.min.js"></script>
+<script type="text/javascript" src="${basePath}/resources/lib/bootstrap/js/bootstrap.min.js"></script>
+<link rel="icon" href="${basePath}/resources/images/favicon.ico" type="image/x-icon"/>
+<link rel="shortcut icon" href="${basePath}/resources/images/favicon.ico" type="image/x-icon"/>
+<script src="${basePath}/resources/lib/crypto-md5.js"></script>
+    <style>
+        .form-signin{
+            max-width: 330px;
+            padding-top:100px;
+            margin: 0 auto;
+        }
+        .form-signin .form-control{
+            font-size: 16px;
+            height: auto;
+            padding: 10px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        body {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+        <form class="form-horizontal form-signin" role="form" action="login" method="post" >
+            <#if errorMsg??>
+                <div class="alert alert-error" >
+                    <a class="close" data-dismiss="alert">×</a>
+                    ${errorMsg}
+                </div>
+            </#if>
+            <h2 class="form-signin-heading">Login in</h2>
+            <input name="useraccount" class="form-control" placeholder="用户名" value="admin">
+            <input type="password" name="password" class="form-control"placeholder="密码" autofocus="true" onchange="encrypt(this)">
+            <label class="checkbox">
+                <input type="checkbox" value="remember-me">记住
+            </label>
+            <button type="submit" class="btn btn-lg btn-primary btn-block">登录</button>
+        </form>
+</div>
+</body>
+<script type="text/javascript">
+    function encrypt(obj) {
+        obj.value = CryptoJS.MD5(obj.value);
+    }
+</script>
+</html>

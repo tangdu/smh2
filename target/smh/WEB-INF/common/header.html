@@ -1,0 +1,27 @@
+<#assign basePath=req.contextPath>
+<#--assign shiro=JspTaglibs["http://shiro.apache.org/tags"] />-->
+<meta charset="utf-8">
+<meta name="description" content="my self">
+<meta name="author" content="tdu">
+
+<link rel="icon" href="${basePath}/resources/images/favicon.ico" type="image/x-icon"/>
+<link rel="shortcut icon" href="${basePath}/resources/images/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="${basePath}/resources/extjs4/resources/css/ext-all.css"/>
+<link rel="stylesheet" href="${basePath}/resources/extjs4/icons/style.css"/>
+<link rel="stylesheet" href="${basePath}/resources/extjs4/resources/portal.css"/>
+<link rel="stylesheet" href="${basePath}/resources/extjs4/ux/statusbar/css/statusbar.css"/>
+<script type="text/javascript" src="${basePath}/resources/extjs4/bootstrap.js"></script>
+<script type="text/javascript" src="${basePath}/resources/extjs4/ext-lang-zh_CN.js"></script>
+<!--extensible-->
+<link rel="stylesheet" href="${basePath}/resources/lib/extensible/resources/css/extensible-all.css"/>
+<script type="text/javascript" src="${basePath}/resources/lib/extensible/extensible-all.js"></script>
+
+<!--lib--->
+<script src="${basePath}/resources/lib/crypto-md5.js"></script>
+
+<script type="text/javascript">
+    var basePath="${basePath}";
+    var user=${Session["user"]};
+</script>
+<script type="text/javascript" src="${basePath}/resources/mod/common.js"></script>
+<script src="${basePath}/resources/mod/commtree.js"></script>

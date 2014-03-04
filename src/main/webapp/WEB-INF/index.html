@@ -1,0 +1,104 @@
+<!DOCTYPE>
+<html lang="zh_CN">
+<head>
+    <title>IPE快速开发平台</title>
+    <#include "common/header.html"/>
+    <style type="text/css">
+        body {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #eee;
+        }
+        #loading{
+            margin-right:auto;margin-left:auto;
+            width: 200px;
+            height: 50px;
+            background-color: dodgerblue;
+            padding: 10px;
+            margin-top: 200px;
+            /*text-align: center;*/
+            -webkit-border-radius:11px;
+            opacity:6;
+            z-index: 99999;
+        }
+        #app-msg{
+            display: none;
+            z-index: 99999;
+            width:300px;
+            margin: 0px;
+            padding: 4px;
+        }
+        #app-msg div{
+            clear: both;
+        }
+        #app-content1{
+            border: 1px solid #0079d2;
+            overflow-y:auto;
+        }
+        #app-header1,#app-footer1{
+            color: #864900;margin: 0px;padding:0px;
+        }
+        #app-footer1{
+            text-align: right;
+        }
+        #app-alert {
+            position: fixed;
+            left: 0;
+            top: 10px;
+            width: 100%;
+            z-index: 20000;
+        }
+        #app-alert .msg {
+            width: 300px;
+            border-radius: 8px;
+            -moz-border-radius: 8px;
+            background: #FFEEBF;
+            border: 2px solid #EFB34A;
+            margin: 3px auto;
+            padding: 10px 15px;
+            color: #555;
+            -moz-box-shadow: 0 5px 8px #ccc;
+            -webkit-box-shadow: 0 5px 8px #ccc;
+            box-shadow: 0 5px 8px #ccc;
+        }
+        #app-alert .msg h3 {
+            margin: 0 0 8px;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        #app-alert .msg p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="loading"><img src="resources/images/loading.gif">正在加载....</div>
+<span id="app-msg" style="height: 120px;">
+    <div id="app-header1" style="height:20px;">@我的消息</div>
+    <div id="app-content1" style="height: 80px;"></div>
+    <div id="app-footer1"><a href="#">更多</a></div>
+</span>
+</body>
+<script type="text/javascript">
+    Ext.onReady(function(){
+        Ext.QuickTips.init();
+        Ext.form.Field.prototype.msgTarget = "side";
+
+        //加载菜单
+        Ext.Ajax.request({
+            url:'menu/getRoleMenus',
+            method:'post',
+            success:function(res){
+                var result=Ext.decode(res.responseText);
+                if(result.success){
+                    ipe.conifg.userMenu=Ext.decode(result.rows);
+                    ///////////////init///////////////
+                    Ext.create('Ipe.desktop.Desktop');
+                    /////////////////////////
+                    //ipe.Sok=connect();
+                }
+            }
+        });
+    });
+</script>
+</html>
