@@ -1,5 +1,6 @@
 ###架构
 Spring3.2.0+Hibernate4.2Final+JPA2+Shiro
+http://121.42.48.155:8090/ipe/
 
 ####系统首页
 ![image](https://github.com/tangdu/smh2/raw/master/img/ipe.PNG)
